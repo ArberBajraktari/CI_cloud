@@ -64,6 +64,15 @@ jobs:
           # This assumes pytest is installed via the install-package step above
           command: python index.py
 
+commands:
+  run_eslint:
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: ESLint
+          command: echo "does it work?"
 
 
 
