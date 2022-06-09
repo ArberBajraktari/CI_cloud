@@ -68,8 +68,6 @@ commands:
   run_eslint:
     steps:
       - checkout
-      - attach_workspace:
-          at: .
       - run:
           name: ESLint
           command: echo "does it work?"
