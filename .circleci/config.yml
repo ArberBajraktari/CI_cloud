@@ -11,12 +11,23 @@ orbs:
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/python
   python: circleci/python@1.5.0
 
+  orbs:
+    linter: reactioncommerce/linter@0.0.1
+
+
+executors:
+  python_executor:
+    docker:
+      - image: cimg/python:3.10.2
+
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   lint:
-    docker:
-      - image: cimg/python:3.10.2
+    executor: python_executor
+    steps:
+      - run_dockerfile_lint
 
     steps:
       - checkout
