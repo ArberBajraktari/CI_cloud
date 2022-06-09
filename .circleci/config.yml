@@ -19,9 +19,6 @@ executors:
   python_executor:
     docker:
       - image: cimg/python:3.10.2
-    - run:
-      name: Install deps
-      command: echo "hez"
 
 
 # Define a job to be invoked later in a workflow.
@@ -30,6 +27,7 @@ jobs:
   lint:
     executor: python_executor
     steps:
+      - install_lint_dependecies
       - run_eslint
 
   test:
@@ -66,14 +64,18 @@ jobs:
           command: python index.py
 
 commands:
+  install_lint_dependecies:
+    steps:
+      - run:
+          name: Installing
+          command: pip install pylint
+
   run_eslint:
     steps:
       - checkout
-      - attach_workspace:
-          at: /home
       - run:
-          name: ESLint
-          command: echo "does it work?"
+          name: Linting
+          command: pylint index.py
 
 
 
