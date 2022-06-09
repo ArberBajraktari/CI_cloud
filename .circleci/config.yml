@@ -29,13 +29,6 @@ jobs:
     steps:
       - run_dockerfile_lint
 
-    steps:
-      - checkout
-      - run:
-          name: Linting
-          # This assumes pytest is installed via the install-package step above
-          command: python index.py
-
   test:
     docker:
       - image: cimg/python:3.10.2
