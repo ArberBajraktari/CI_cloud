@@ -29,9 +29,7 @@ jobs:
       - image: cimg/python:3.10.2
 
     steps:
-      - run:
-          name: Linting
-          command: run_dockerfile_lint
+      - run_dockerfile_lint
   test:
     docker:
       - image: cimg/python:3.10.2
