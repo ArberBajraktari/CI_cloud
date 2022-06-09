@@ -30,9 +30,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Run echo
+          name: Run index.py
           # This assumes pytest is installed via the install-package step above
-          command: echo "sdasd"
+          command: python index.py
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
