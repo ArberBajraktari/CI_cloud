@@ -19,6 +19,9 @@ executors:
   python_executor:
     docker:
       - image: cimg/python:3.10.2
+    - run:
+      name: Install deps
+      command: echo "hez"
 
 
 # Define a job to be invoked later in a workflow.
