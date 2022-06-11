@@ -39,6 +39,8 @@ jobs:
           name: Publish Dockerimage to Dockerhub
           command: |
              docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+             docker build -t $IMAGE_NAME .
+             docker push $IMAGE_NAME:latest
 
 
 
