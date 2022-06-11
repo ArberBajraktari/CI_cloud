@@ -36,11 +36,8 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: Testing
-          # This assumes pytest is installed via the install-package step above
-          # command: python index.py
-          command: pip3 install -r requirements.txt
+      - install_flask
+
 
   build:
     docker:
@@ -70,6 +67,12 @@ commands:
   #     - run:
   #         name: Installing
   #         command: pip install pycodestyle
+
+  install_flask:
+    steps:
+        - run:
+            name: Installing Flask
+            command: pip install flask
 
   run_eslint:
     steps:
