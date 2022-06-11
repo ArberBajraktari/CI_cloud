@@ -29,6 +29,9 @@ jobs:
 
   test:
     executor: python_executor
+    auth:
+      username: $DOCKERHUB_USERNAME
+      password: $DOCKERHUB_PASSWORD
     steps:
       - push_to_dockerhub
 
