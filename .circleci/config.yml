@@ -16,6 +16,9 @@ executors:
   python_executor:
     docker:
       - image: cimg/python:3.10.2
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
 
 
 # Define a job to be invoked later in a workflow.
@@ -29,9 +32,6 @@ jobs:
 
   test:
     executor: python_executor
-    auth:
-      username: $DOCKERHUB_USERNAME
-      password: $DOCKERHUB_PASSWORD
     steps:
       - push_to_dockerhub
 
