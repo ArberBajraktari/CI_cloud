@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Publish Dockerimage to Dockerhub
           command: |
-            echo "$DOCKERHUB_PASSWORD"
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 
 
