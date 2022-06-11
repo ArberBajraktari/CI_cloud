@@ -15,7 +15,7 @@ orbs:
 executors:
   python_executor:
     docker:
-      - image: cimg/python:3.10.2
+      - image: bajraktari/ci_frontend_flask
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
