@@ -30,10 +30,9 @@ jobs:
   test:
     docker:
       - image: python:slim
-        auth:
-          username: $DOCKER_USERNAME
-          password: $DOCKER_PASSWORD
-          
+      auth:
+        username: "test"
+        password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       # all docker commands can be run after this is run
