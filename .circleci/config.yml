@@ -40,7 +40,7 @@ jobs:
           name: Testing
           # This assumes pytest is installed via the install-package step above
           # command: python index.py
-          command: pip3 install -r requirements.txt | python3 -m flask run
+          command: pip install -r requirements.txt | python3 -m flask run
 
   build:
     docker:
