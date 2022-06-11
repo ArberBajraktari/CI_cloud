@@ -29,17 +29,10 @@ jobs:
 
   test:
     docker:
-<<<<<<< HEAD
-      - image: python:slim
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
-=======
       - image: cimg/python:slim
       auth:
         username: $DOCKERHUB_USERNAME
         password: $DOCKERHUB_PASSWORD
->>>>>>> 4e07b0c (cimg)
     steps:
       - checkout
       # all docker commands can be run after this is run
