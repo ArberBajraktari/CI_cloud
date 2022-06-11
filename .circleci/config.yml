@@ -30,13 +30,15 @@ jobs:
   test:
     docker:
       - image: python:slim
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+      auth:
+        username: $DOCKERHUB_USERNAME
+        password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       # all docker commands can be run after this is run
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 20.10.14
+          docker_layer_caching: true
       - run:
           name: Publish Dockerimage to Dockerhub
           command: |
