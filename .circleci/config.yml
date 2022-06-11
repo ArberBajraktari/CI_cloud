@@ -33,7 +33,12 @@ jobs:
   test:
     executor: python_executor
     steps:
-      - push_to_dockerhub
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Publish Dockerimage to Dockerhub
+          command: |
+            echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
 
 
 
@@ -85,14 +90,6 @@ commands:
           name: Linting
           command: pycodestyle --first index.py
 
-  push_to_dockerhub:
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Publish Dockerimage to Dockerhub
-          command: |
-            echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
 
 
 
