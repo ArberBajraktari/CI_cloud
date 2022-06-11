@@ -13,7 +13,7 @@ orbs:
 executors:
   python_executor:
     docker:
-      - image: bajraktari/ci_frontend_flask
+      - image: bajraktari/test
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
