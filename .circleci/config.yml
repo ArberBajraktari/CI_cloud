@@ -89,9 +89,8 @@ commands:
       - run:
           name: Publish Dockerimage to Dockerhub
           command: |
-            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker build -t $IMAGE_NAME .
-            docker push $IMAGE_NAME:latest
+            echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+
 
 
 
