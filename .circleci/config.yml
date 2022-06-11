@@ -36,7 +36,8 @@ jobs:
 
     steps:
       - checkout
-      - install_flask
+      - install_dependencies
+      - start_app
 
 
   build:
@@ -68,11 +69,17 @@ commands:
   #         name: Installing
   #         command: pip install pycodestyle
 
-  install_flask:
+  install_dependencies:
     steps:
         - run:
-            name: Installing Flask
-            command: pip install flask
+            name: Installing dependencies
+            command: pip install -r requirements.txt
+
+  start_app:
+    steps:
+        - run:
+            name: Starting Flask app
+            command: flask run
 
   run_eslint:
     steps:
@@ -91,5 +98,5 @@ workflows:
     jobs:
       # - lint
       - test
-      - build
-      - deployment
+      # - build
+      # - deployment
