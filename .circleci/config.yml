@@ -68,14 +68,14 @@ commands:
     steps:
       - run:
           name: Installing
-          command: pip install pylint
+          command: pip install pycodestyle
 
   run_eslint:
     steps:
       - checkout
       - run:
           name: Linting
-          command: pylint index.py
+          command: pycodestyle --first optparse.py
 
 
 
