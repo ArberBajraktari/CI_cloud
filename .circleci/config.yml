@@ -75,7 +75,7 @@ commands:
       - checkout
       - run:
           name: Linting
-          command: pycodestyle --first optparse.py
+          command: pycodestyle --first index.py
 
 
 
