@@ -24,11 +24,11 @@ executors:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  lint:
-    executor: python_executor
-    steps:
-      - install_lint_dependecies
-      - run_eslint
+  # lint:
+    # executor: python_executor
+    # steps:
+      # - install_lint_dependecies
+      # - run_eslint
 
   test:
     docker:
@@ -39,7 +39,9 @@ jobs:
       - run:
           name: Testing
           # This assumes pytest is installed via the install-package step above
-          command: python index.py
+          # command: python index.py
+          command: pip3 install -r requirements.txt
+          command: python3 -m flask run
 
   build:
     docker:
@@ -64,11 +66,11 @@ jobs:
           command: python index.py
 
 commands:
-  install_lint_dependecies:
-    steps:
-      - run:
-          name: Installing
-          command: pip install pycodestyle
+  # install_lint_dependecies:
+  #   steps:
+  #     - run:
+  #         name: Installing
+  #         command: pip install pycodestyle
 
   run_eslint:
     steps:
@@ -85,7 +87,7 @@ workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - lint
+      # - lint
       - test
       - build
       - deployment

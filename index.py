@@ -1,8 +1,6 @@
-class Test:
-    def addNum(self, a, b):
-        c = a+b
-        print("The result is " + str(c))
+from flask import Flask
+app = Flask(__name__)
 
-
-p1 = Test()
-p1.addNum(3, 4)
+@app.route('/')
+def hello_world():
+    return 'Hello, Docker!'
