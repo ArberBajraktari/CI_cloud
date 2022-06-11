@@ -36,6 +36,7 @@ jobs:
     steps:
       - checkout
       # all docker commands can be run after this is run
+      - setup_remote_docker
       - run:
           name: Publish Dockerimage to Dockerhub
           command: |
