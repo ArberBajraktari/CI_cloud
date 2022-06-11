@@ -30,9 +30,15 @@ jobs:
   test:
     docker:
       - image: python:slim
+<<<<<<< HEAD
         auth:
           username: "test"
           password: $DOCKERHUB_PASSWORD
+=======
+      auth:
+        username: $DOCKERHUB_USERNAME
+        password: $DOCKERHUB_PASSWORD
+>>>>>>> a8970d4 (login should workd)
     steps:
       - checkout
       # all docker commands can be run after this is run
