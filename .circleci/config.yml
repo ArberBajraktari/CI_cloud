@@ -51,6 +51,7 @@ jobs:
           name: Building
           # This assumes pytest is installed via the install-package step above
           command: python3 app.py
+          background: true
 
   deployment:
     executor: python_executor
