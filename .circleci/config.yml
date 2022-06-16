@@ -46,6 +46,7 @@ jobs:
     executor: python_executor
     steps:
       - checkout
+      - install_dependencies
       - run:
           name: Building
           # This assumes pytest is installed via the install-package step above
@@ -106,7 +107,7 @@ workflows:
       - lint
       - test  
       - build
-      - test:
+      - deployment:
           filters:
             branches:
               only:
