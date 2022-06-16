@@ -99,27 +99,17 @@ commands:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  master_branch: # This is the name of the workflow, feel free to change it to better match your workflow.
+  version: 2
+  workflow: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       # - lint
-      - test
-        filters:
-          branches:
-            only:
-              - master
-      # - build
-      # - deployment
-
-  development_branch:
-    jobs:
-      # - lint
-      # - test
+      # - test  
       - build
-        filters:
-          branches:
-            only:
-              - mascircleci-project-setupter
-      # - deployment
+      - test:
+          filters:
+            branches:
+              only:
+                - master
 
 
