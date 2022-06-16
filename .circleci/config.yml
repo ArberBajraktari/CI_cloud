@@ -24,11 +24,11 @@ executors:
 jobs:
 
   # Liting stage
-   lint:
-     executor: python_executor
-     steps:
-       - install_lint_dependecies
-       - run_eslint
+  lint:
+    executor: python_executor
+    steps:
+      - install_lint_dependecies
+      - run_eslint
 
 
   test:
@@ -72,11 +72,11 @@ commands:
           command: pip install pycodestyle
 
   run_eslint:
-  steps:
-    - checkout
-    - run:
-        name: Linting
-        command: pycodestyle --first index.py
+    steps:
+      - checkout
+      - run:
+          name: Linting
+          command: pycodestyle --first index.py
 
   install_dependencies:
     steps:
