@@ -53,7 +53,7 @@ jobs:
       - run:
           name: Building
           # This assumes pytest is installed via the install-package step above
-          command: python index.py
+          command: echo "testing build"
 
   deployment:
     docker:
@@ -99,10 +99,26 @@ commands:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+  master_branch: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
+    when:
+      condition:
+        not:
+          - equals: [ master, << pipeline.git.branch >>]
     jobs:
       # - lint
       - test
       # - build
       # - deployment
+
+  development_branch:
+    when:
+      condition:
+          - equals: [ master, << pipeline.git.branch >>]
+    jobs:
+      # - lint
+      # - test
+      - build
+      # - deployment
+
+
