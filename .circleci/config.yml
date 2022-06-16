@@ -101,24 +101,25 @@ commands:
 workflows:
   master_branch: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
-    when:
-      condition:
-        not:
-          - equals: [ master, << pipeline.git.branch >>]
     jobs:
       # - lint
       - test
+        filters:
+          branches:
+            only:
+              - master
       # - build
       # - deployment
 
   development_branch:
-    when:
-      condition:
-          - equals: [ master, << pipeline.git.branch >>]
     jobs:
       # - lint
       # - test
       - build
+        filters:
+          branches:
+            only:
+              - mascircleci-project-setupter
       # - deployment
 
 
