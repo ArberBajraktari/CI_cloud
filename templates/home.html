@@ -42,13 +42,23 @@
         </div>
     </nav>
 
-    <div class="show_data">
-        <p>{{ output }}</p>
-    </div>
     <div class="div_button">
         <form action="{{ url_for('handle_data') }}" method="post">
             <input type="submit">
         </form>
     </div>
+
+    <br/>
+    
+    <div class="show_data">
+      <p>{{ data }}</p>
+    </div>
+
+    <style>
+      body {
+        padding: 5em;
+      }
+    </style>
+
 </body>
 </html>
