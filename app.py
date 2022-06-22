@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+import time
 import requests
 app = Flask(__name__)
 count = 0
@@ -17,18 +18,25 @@ def data_requested(output):
 @app.route('/handle_data', methods=['POST'])
 def handle_data():
     global count
-    if count%2 == 0:
-        output = "bravo"
-    else:
-        output = "asht tu punu"
-    count+=1
-    #resp = requests.get('http://0.0.0.0:80/getData')
-    return redirect(url_for('data_requested', output=output))
+    page = ''
+    while page == '':
+        try:
+            page = requests.get('http://0.0.0.0:80/getData')
+            break
+        except:
+            print("Connection refused by the server..")
+            print("ZZzzzz...")
+            time.sleep(2)
+            print("Was a nice sleep, now let me continue...")
+            count += 1
+            if count == 3:
+                page = """The connection to the API could not be established.
+                Please check if the API is running!"""
+                break
+            continue
+    return redirect(url_for('data_requested', output=page))
 
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
 
-
-#resp = requests.get('http://0.0.0.0:80/getData')
-#return 'Response from TestRequest: '+resp.text
